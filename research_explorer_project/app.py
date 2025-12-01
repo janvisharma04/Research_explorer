@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 from crew import ResearchExplorerCrew
-
 import os
 
 app = Flask(__name__)
