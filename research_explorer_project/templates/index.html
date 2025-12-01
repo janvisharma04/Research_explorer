@@ -1,0 +1,262 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<style>
+  .enhanced-card {
+    background: transparent;
+    padding: 0;
+    border: none;
+  }
+
+  .hero-section {
+    text-align: center;
+    margin-bottom: 3rem;
+    animation: fadeIn 0.8s ease;
+  }
+
+  .main-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -1px;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .subtitle-text {
+    color: #4a5568;
+    line-height: 1.8;
+    font-size: 1.05rem;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+  }
+
+  .feature-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+
+  .feature-pill {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+    border: 1px solid rgba(102, 126, 234, 0.2);
+    padding: 0.5rem 1.2rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    color: #667eea;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .feature-pill:hover {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+  }
+
+  .form-section {
+    background: linear-gradient(135deg, #f8f9fc 0%, #ffffff 100%);
+    padding: 2.5rem;
+    border-radius: 20px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  }
+
+  .form-label {
+    color: #1a202c;
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .form-label::before {
+    content: '';
+    width: 4px;
+    height: 16px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 2px;
+  }
+
+  .form-control {
+    border-radius: 14px;
+    padding: 0.85rem 1.2rem;
+    border: 2px solid #e2e8f0;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    background: #ffffff;
+  }
+
+  .form-control:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.15);
+    background: #ffffff;
+  }
+
+  .form-control::placeholder {
+    color: #a0aec0;
+  }
+
+  textarea.form-control {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  .btn-generate {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    padding: 0.9rem 2.5rem;
+    border-radius: 14px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    color: #ffffff;
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-generate::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+  }
+
+  .btn-generate:hover::before {
+    left: 100%;
+  }
+
+  .btn-generate:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+  }
+
+  .btn-generate:active {
+    transform: translateY(-1px);
+  }
+
+  .info-card {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+    border: 1px solid rgba(102, 126, 234, 0.15);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .info-card-title {
+    color: #667eea;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .info-card-text {
+    color: #4a5568;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 768px) {
+    .main-title {
+      font-size: 1.8rem;
+    }
+    .form-section {
+      padding: 1.5rem;
+    }
+    .feature-pills {
+      justify-content: flex-start;
+    }
+  }
+</style>
+
+<div class="enhanced-card">
+  <div class="hero-section">
+    <h1 class="main-title">
+      Research Topic Explorer & Report Generator
+    </h1>
+
+    <p class="subtitle-text">
+      Transform any research topic into a comprehensive report with AI-powered analysis. 
+      Our intelligent system breaks down complex topics, gathers information, and delivers 
+      structured insights with presentation-ready outlines.
+    </p>
+
+    <div class="feature-pills">
+      <span class="feature-pill">🔍 Topic Analysis</span>
+      <span class="feature-pill">📊 Data Collection</span>
+      <span class="feature-pill">📝 Report Generation</span>
+      <span class="feature-pill">🎯 PPT Outlines</span>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <form method="POST">
+      <div class="mb-4">
+        <label for="topic" class="form-label">Research Topic</label>
+        <input
+          type="text"
+          class="form-control"
+          id="topic"
+          name="topic"
+          placeholder="e.g., Concrete crack segmentation with deep learning"
+          required
+        />
+      </div>
+
+      <div class="mb-4">
+        <label for="instructions" class="form-label">Additional Instructions (Optional)</label>
+        <textarea
+          class="form-control"
+          id="instructions"
+          name="instructions"
+          rows="5"
+          placeholder="Provide specific focus areas, preferred methodologies, or aspects you'd like emphasized. For example: 'Focus on U-Net architectures and real-world deployment challenges.'"
+        ></textarea>
+      </div>
+
+      <div class="text-center">
+        <button type="submit" class="btn btn-generate">
+          🚀 Generate Research Report
+        </button>
+      </div>
+    </form>
+
+    <div class="info-card">
+      <div class="info-card-title">
+        💡 How It Works
+      </div>
+      <p class="info-card-text">
+        Our AI pipeline analyzes your topic, identifies key subtopics, researches relevant 
+        information from multiple sources, synthesizes findings into a coherent report, and 
+        provides a structured presentation outline. The entire process takes just a few moments!
+      </p>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

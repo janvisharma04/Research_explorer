@@ -1,0 +1,4 @@
+flask
+crewai[google-genai]
+openai
+python-dotenv

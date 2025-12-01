@@ -1,0 +1,28 @@
+topic_decomposition:
+  agent: topic_decomposer
+  description: >
+    Break the main research topic into 4–6 subtopics with short explanations.
+  expected_output: >
+    'Topic Decomposition' section with numbered list of subtopics.
+
+info_collection:
+  agent: info_collector
+  description: >
+    For each subtopic, gather definitions, key methods, pros and cons.
+  expected_output: >
+    'Collected Information' section with subsections per subtopic.
+
+report_writing:
+  agent: report_writer
+  description: >
+    Use previous outputs to write a mini-report with Abstract, Introduction,
+    sections for each subtopic, and Conclusion.
+  expected_output: >
+    'Mini Research Report' with academic-style structure.
+
+presentation_outline:
+  agent: presentation_agent
+  description: >
+    Convert the report into a slide-wise outline with bullet points.
+  expected_output: >
+    'Presentation Outline' section listing slides.
